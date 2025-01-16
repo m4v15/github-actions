@@ -5,10 +5,6 @@
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -33,9 +29,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
-        working-directory: ./my-app
         id: detect-package-manager
         run: |
+          cd my-app
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
@@ -66,7 +62,6 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          working-directory: ./my-app
           path: |
             .next/cache
           # Generate a new cache whenever packages or source files change.
@@ -75,15 +70,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        working-directory: ./my-app
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        working-directory: ./my-app
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          working-directory: ./my-app
           path: ./out
 
   # Deployment job
