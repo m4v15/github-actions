@@ -23,7 +23,7 @@ jobs:
         uses: capawesome-team/cloud-live-update-action@v0.0.1
         id: upload-action
         with:
-          appId: 'addb597c-9cbd-4cdc-bcc0-cd5c2234a03f'
+          appId: '137658f6-588e-41d3-a46b-00488a5fc878'
           channel: 'production-1.0.0'
-          path: 'dist'
+          path: 'out'
           token: ${{ secrets.CAPAWESOME_TOKEN }}
