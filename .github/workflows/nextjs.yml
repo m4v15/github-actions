@@ -8,11 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 12
-      - run: cd my-app && npm install -g yarn
-      - run: corepack enable
-      - run: cd my-app && yarn install --frozen-lockfile
+          node-version: '20.x'
+      - run: cd my-app && yarn install
       - run: cd my-app && yarn build
