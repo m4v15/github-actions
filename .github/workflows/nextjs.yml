@@ -19,3 +19,11 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn build
+      - name: Deploy Live Update
+        uses: capawesome-team/cloud-live-update-action@v0.0.1
+        id: upload-action
+        with:
+          appId: 'addb597c-9cbd-4cdc-bcc0-cd5c2234a03f'
+          channel: 'production-1.0.0'
+          path: 'dist'
+          token: ${{ secrets.CAPAWESOME_TOKEN }}
