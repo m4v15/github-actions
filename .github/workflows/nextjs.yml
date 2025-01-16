@@ -43,6 +43,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build with Next.js
+        env:  
+          SECRET: "Hello there"  
         run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
