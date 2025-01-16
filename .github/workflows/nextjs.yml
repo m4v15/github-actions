@@ -17,5 +17,5 @@ jobs:
         with:
           node-version: '20.x'
           cache: 'yarn'
-      - run: cd my-app && yarn install
-      - run: cd my-app && yarn build
+      - run: yarn install
+      - run: yarn build
