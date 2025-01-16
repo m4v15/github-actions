@@ -13,5 +13,6 @@ jobs:
         with:
           node-version: 12
       - run: cd my-app && npm install -g yarn
+      - run: cd my-app && corepack enable
       - run: cd my-app && yarn install --frozen-lockfile
       - run: cd my-app && yarn build
