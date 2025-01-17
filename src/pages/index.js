@@ -58,7 +58,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {process.env.SECRET}
+            WAHEYYYY
           </a>
         </div>
       </main>
