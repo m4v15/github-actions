@@ -44,7 +44,7 @@ jobs:
         run: yarn install
       - name: Build with Next.js
         env:  
-          BUILD_DIR: 'out'  
+          BUILD_DIR: ${{vars.BUILD_DIR}}  
         run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
