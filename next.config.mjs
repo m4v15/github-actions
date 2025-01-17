@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'out',
+  distDir: process.env.BUILD_DIR,
   reactStrictMode: true,
 };
 
